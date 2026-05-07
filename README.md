@@ -1,2 +1,2 @@
-# lantern-auth
- Authentication framework for modern web applications 
+# Lantern Auth
+Lantern Auth is an authentication framework for TypeScript
