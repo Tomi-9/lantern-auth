@@ -1,11 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Link
+        href="https://github.com/Tomi-9/lantern-auth"
+        >
+        Github
+        </Link>
         <Image
-          className="dark:invert"
+          className="dark:invert size-50"
           src="/favicon.png"
           alt="lantern-auth logo"
           width={100}
@@ -17,7 +23,7 @@ export default function Home() {
             Lantern Auth
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 font-semibold dark:text-zinc-300">
-            Authentication library for TypeScript. {" "}
+            A Minimalist Authentication library for TypeScript. {" "}
           </p>
         </div>
       </main>
