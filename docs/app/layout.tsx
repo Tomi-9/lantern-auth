@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Lantern Auth",
-  description: "Authentication library for TypeScript.",
+  description: "A Minimalist Authentication library for TypeScript.",
   icons: {
   icon: "/favicon/favicon.png",
 }
