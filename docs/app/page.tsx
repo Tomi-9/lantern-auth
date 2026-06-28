@@ -1,32 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+
+import { Navbar } from '@/components/navbar';
+import { Hero } from '@/components/hero';
+import { Footer } from '@/components/footer';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Link
-        href="https://github.com/Tomi-9/lantern-auth"
-        >
-        Github
-        </Link>
-        <Image
-          className="dark:invert size-50"
-          src="/favicon.png"
-          alt="lantern-auth logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-6xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Lantern Auth
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 font-semibold dark:text-zinc-300">
-            A Minimalist Authentication library for TypeScript. {" "}
-          </p>
-        </div>
+   <div className="flex flex-col min-h-screen w-full bg-primary text-foreground">
+      <Navbar />
+      <main className="flex-grow w-full">
+        <Hero />
       </main>
+      <Footer />
     </div>
   );
 }
