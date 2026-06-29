@@ -5,9 +5,10 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="relative w-full py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-7xl flex flex-col justify-center gap-4 sm:flex-row sm:items-start sm:gap-12">
       <Image
         className="dark:invert size-50"
-        src="/favicon.png"
+        src="/favicon/favicon.png"
         alt="lantern-auth logo"
         width={100}
         height={20}
@@ -20,6 +21,7 @@ export function Hero() {
         <p className="max-w-md text-lg leading-8 text-zinc-600 font-semibold dark:text-zinc-300">
           A Minimalist Authentication library for TypeScript.
         </p>
+      </div>
       </div>
     </section>
   );
