@@ -36,7 +36,7 @@ export function Navbar() {
           {/* Social Links */}
           <div className="flex items-center gap-5">
             <Link
-              href=""
+              href="https://github.com/Tomi-9/lantern-auth"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors"
@@ -45,7 +45,7 @@ export function Navbar() {
               <FaGithub className="w-5 h-5" />
             </Link>
             <Link
-              href="https://twitter.com"
+              href="https://x.com/lantern_auth"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors"
