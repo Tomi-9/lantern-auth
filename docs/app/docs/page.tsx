@@ -2,8 +2,8 @@
 
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import Link from 'next/link';
 import { useState } from 'react';
+import { BookOpen, Zap } from 'lucide-react';
 
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState('getting-started');
@@ -11,6 +11,7 @@ export default function DocsPage() {
   const sections = {
     'getting-started': {
       title: 'Get Started',
+      icon: BookOpen,
       content: (
         <div className="space-y-6">
           <div>
@@ -45,6 +46,7 @@ const auth = new LanternAuth({
     },
     'adapters': {
       title: 'Adapters & Guides',
+      icon: Zap,
       content: (
         <div className="space-y-6">
           <div>
@@ -85,25 +87,29 @@ export default nextAdapter(auth);`}</code>
   return (
     <div className="flex flex-col min-h-screen w-full bg-background text-foreground">
       <Navbar />
-      <main className="flex-grow w-full">
+      <main className="flex-grow w-full border-t border-border/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex gap-8">
             {/* Left Sidebar */}
-            <aside className="hidden lg:block w-64 flex-shrink-0">
-              <nav className="space-y-2 sticky top-8">
-                {Object.entries(sections).map(([key, value]) => (
-                  <button
-                    key={key}
-                    onClick={() => setActiveSection(key)}
-                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                      activeSection === key
-                        ? 'bg-foreground text-background font-semibold'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-border/50'
-                    }`}
-                  >
-                    {value.title}
-                  </button>
-                ))}
+            <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border/30 pr-8">
+              <nav className="space-y-1 sticky top-24">
+                {Object.entries(sections).map(([key, value]) => {
+                  const Icon = value.icon;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => setActiveSection(key)}
+                      className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors flex items-center gap-3 ${
+                        activeSection === key
+                          ? 'bg-foreground text-background font-semibold'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-border/20'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                      {value.title}
+                    </button>
+                  );
+                })}
               </nav>
             </aside>
 

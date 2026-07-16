@@ -5,7 +5,7 @@ import { FaGithub, FaXTwitter } from 'react-icons/fa6';
 
 export function Navbar() {
   return (
-    <nav className="w-full bg-background">
+    <nav className="w-full bg-background border-b border-border/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -23,7 +23,7 @@ export function Navbar() {
               href="/docs"
               className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
             >
-              DOCS
+              Docs
             </Link>
             <Link
               href="/changelog"
