@@ -3,10 +3,13 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { useState } from 'react';
-import { BookOpen, BookMarked, Database, Plug } from 'lucide-react';
+import { BookOpen, BookMarked, Database, Plug, ChevronDown } from 'lucide-react';
+import { SiPostgresql, SiMysql, SiSqlite } from 'react-icons/si';
 
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState('getting-started');
+  const [databaseDropdownOpen, setDatabaseDropdownOpen] = useState(false);
+  const [selectedDatabase, setSelectedDatabase] = useState<string | null>(null);
 
   const sections = {
     'getting-started': {
@@ -47,16 +50,7 @@ export default function DocsPage() {
     'database': {
       title: 'Database',
       icon: Database,
-      content: (
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-3xl font-bold text-foreground mb-4">Database</h2>
-            <p className="text-muted-foreground">
-              In production
-            </p>
-          </div>
-        </div>
-      )
+      content: null
     },
     'plugins': {
       title: 'Plugins',
@@ -87,19 +81,56 @@ export default function DocsPage() {
               <nav className="space-y-1 sticky top-24">
                 {Object.entries(sections).map(([key, value]) => {
                   const Icon = value.icon;
+                  const isDatabase = key === 'database';
+                  
                   return (
-                    <button
-                      key={key}
-                      onClick={() => setActiveSection(key)}
-                      className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors flex items-center gap-3 ${
-                        activeSection === key
-                          ? 'bg-foreground text-background font-semibold'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-border/20'
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
-                      {value.title}
-                    </button>
+                    <div key={key}>
+                      <button
+                        onClick={() => {
+                          setActiveSection(key);
+                          if (isDatabase) {
+                            setDatabaseDropdownOpen(!databaseDropdownOpen);
+                          }
+                        }}
+                        className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors flex items-center gap-3 ${
+                          activeSection === key
+                            ? 'bg-foreground text-background font-semibold'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-border/20'
+                        }`}
+                      >
+                        <Icon className="w-5 h-5" />
+                        {value.title}
+                        {isDatabase && (
+                          <ChevronDown className={`w-4 h-4 ml-auto transition-transform ${databaseDropdownOpen ? 'rotate-180' : ''}`} />
+                        )}
+                      </button>
+                      
+                      {isDatabase && databaseDropdownOpen && (
+                        <div className="mt-1 ml-4 space-y-1 border-l border-border/30 pl-4">
+                          {[
+                            { name: 'PostgreSQL', icon: SiPostgresql },
+                            { name: 'MySQL', icon: SiMysql },
+                            { name: 'SQLite', icon: SiSqlite }
+                          ].map((db) => {
+                            const DbIcon = db.icon;
+                            return (
+                              <button
+                                key={db.name}
+                                onClick={() => setSelectedDatabase(db.name)}
+                                className={`w-full text-left px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ${
+                                  selectedDatabase === db.name
+                                    ? 'bg-foreground text-background font-semibold'
+                                    : 'text-muted-foreground hover:text-foreground hover:bg-border/20'
+                                }`}
+                              >
+                                <DbIcon className="w-4 h-4" />
+                                {db.name}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </nav>
@@ -108,7 +139,29 @@ export default function DocsPage() {
             {/* Main Content */}
             <div className="flex-1 min-w-0">
               <div className="max-w-3xl">
-                {currentSection?.content}
+                {activeSection === 'database' ? (
+                  <div className="space-y-6">
+                    <div>
+                      <h2 className="text-3xl font-bold text-foreground mb-4">Database</h2>
+                      {selectedDatabase ? (
+                        <div className="flex items-center gap-3">
+                          {selectedDatabase === 'PostgreSQL' && <SiPostgresql className="w-6 h-6 text-[#336791]" />}
+                          {selectedDatabase === 'MySQL' && <SiMysql className="w-6 h-6 text-[#00758F]" />}
+                          {selectedDatabase === 'SQLite' && <SiSqlite className="w-6 h-6 text-[#003B57]" />}
+                          <p className="text-muted-foreground">
+                            In production
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground">
+                          In production
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  currentSection?.content
+                )}
               </div>
             </div>
           </div>
