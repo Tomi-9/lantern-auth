@@ -89,8 +89,11 @@ export default function DocsPage() {
                         onClick={() => {
                           setActiveSection(key);
                           if (isDatabase) {
-                            setDatabaseDropdownOpen(!databaseDropdownOpen);
+                            setDatabaseDropdownOpen(true);
+                          } else {
+                            setDatabaseDropdownOpen(false);
                           }
+                          setSelectedDatabase(null);
                         }}
                         className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors flex items-center gap-3 ${
                           activeSection === key
@@ -101,7 +104,7 @@ export default function DocsPage() {
                         <Icon className="w-5 h-5" />
                         {value.title}
                         {isDatabase && (
-                          <ChevronDown className={`w-4 h-4 ml-auto transition-transform ${databaseDropdownOpen ? 'rotate-180' : ''}`} />
+                          <ChevronDown className={`w-4 h-4 ml-auto transition-transform ${databaseDropdownOpen && activeSection === 'database' ? 'rotate-180' : ''}`} />
                         )}
                       </button>
                       
