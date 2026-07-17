@@ -13,8 +13,6 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2 text-lg font-bold text-foreground hover:opacity-80 transition-opacity"
           >
-            <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center">
-            </div>
             <span>Lantern Auth.</span>
           </Link>
 

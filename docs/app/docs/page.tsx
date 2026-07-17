@@ -3,7 +3,7 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { useState } from 'react';
-import { BookOpen, Zap } from 'lucide-react';
+import { BookOpen, BookMarked, Database, Plug } from 'lucide-react';
 
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState('getting-started');
@@ -27,55 +27,47 @@ export default function DocsPage() {
               <code>npm install lantern-auth</code>
             </pre>
           </div>
-
+        </div>
+      )
+    },
+    'guides': {
+      title: 'Guides',
+      icon: BookMarked,
+      content: (
+        <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Basic Setup</h3>
-            <p className="text-muted-foreground mb-4">
-              Initialize Lantern Auth in your application:
+            <h2 className="text-3xl font-bold text-foreground mb-4">Guides</h2>
+            <p className="text-muted-foreground">
+              In production
             </p>
-            <pre className="bg-background border border-border rounded-lg p-4 text-sm text-foreground overflow-x-auto">
-              <code>{`import { LanternAuth } from 'lantern-auth';
-
-const auth = new LanternAuth({
-  secret: 'your-secret-key'
-});`}</code>
-            </pre>
           </div>
         </div>
       )
     },
-    'adapters': {
-      title: 'Adapters & Guides',
-      icon: Zap,
+    'database': {
+      title: 'Database',
+      icon: Database,
       content: (
         <div className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold text-foreground mb-4">Adapters & Guides</h2>
-            <p className="text-muted-foreground mb-4">
-              Lantern Auth supports multiple adapters for different frameworks and platforms.
+            <h2 className="text-3xl font-bold text-foreground mb-4">Database</h2>
+            <p className="text-muted-foreground">
+              In production
             </p>
           </div>
-
+        </div>
+      )
+    },
+    'plugins': {
+      title: 'Plugins',
+      icon: Plug,
+      content: (
+        <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Express.js</h3>
-            <p className="text-muted-foreground mb-4">
-              Integrate Lantern Auth with Express for server-side authentication:
+            <h2 className="text-3xl font-bold text-foreground mb-4">Plugins</h2>
+            <p className="text-muted-foreground">
+              In production
             </p>
-            <pre className="bg-background border border-border rounded-lg p-4 text-sm text-foreground overflow-x-auto">
-              <code>{`const { expressAdapter } = require('lantern-auth');
-app.use(expressAdapter(auth));`}</code>
-            </pre>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Next.js</h3>
-            <p className="text-muted-foreground mb-4">
-              Use Lantern Auth with Next.js API routes:
-            </p>
-            <pre className="bg-background border border-border rounded-lg p-4 text-sm text-foreground overflow-x-auto">
-              <code>{`import { nextAdapter } from 'lantern-auth';
-export default nextAdapter(auth);`}</code>
-            </pre>
           </div>
         </div>
       )
