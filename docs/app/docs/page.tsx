@@ -41,7 +41,10 @@ export default function DocsPage() {
           <div>
             <h2 className="text-3xl font-bold text-foreground mb-4">Guides</h2>
             <p className="text-muted-foreground">
-              In production
+              migration guides
+            </p>
+            <p className="text-muted-foreground text-sm mt-2">
+              plus more coming soon
             </p>
           </div>
         </div>
@@ -60,7 +63,7 @@ export default function DocsPage() {
           <div>
             <h2 className="text-3xl font-bold text-foreground mb-4">Plugins</h2>
             <p className="text-muted-foreground">
-              In production
+              AuthN, AuthZ and more plugins coming soon
             </p>
           </div>
         </div>
@@ -147,17 +150,17 @@ export default function DocsPage() {
                     <div>
                       <h2 className="text-3xl font-bold text-foreground mb-4">Database</h2>
                       {selectedDatabase ? (
-                        <div className="flex items-center gap-3">
-                          {selectedDatabase === 'PostgreSQL' && <SiPostgresql className="w-6 h-6 text-[#336791]" />}
-                          {selectedDatabase === 'MySQL' && <SiMysql className="w-6 h-6 text-[#00758F]" />}
-                          {selectedDatabase === 'SQLite' && <SiSqlite className="w-6 h-6 text-[#003B57]" />}
-                          <p className="text-muted-foreground">
-                            In production
-                          </p>
+                        <div className="flex items-center gap-4">
+                          {selectedDatabase === 'PostgreSQL' && <SiPostgresql className="w-8 h-8 text-[#336791]" />}
+                          {selectedDatabase === 'MySQL' && <SiMysql className="w-8 h-8 text-[#00758F]" />}
+                          {selectedDatabase === 'SQLite' && <SiSqlite className="w-8 h-8 text-[#003B57]" />}
+                          <h1 className="text-2xl font-bold text-foreground">
+                            {selectedDatabase}
+                          </h1>
                         </div>
                       ) : (
                         <p className="text-muted-foreground">
-                          In production
+                          Select a database to view details
                         </p>
                       )}
                     </div>
