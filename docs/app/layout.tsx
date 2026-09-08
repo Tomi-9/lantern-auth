@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,10 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Lantern Auth",
-  description: "A Minimalist Authentication library for TypeScript.",
+  description: "An Authentication library for TypeScript.",
   icons: {
-  icon: "/favicon/favicon.png",
-}
+    icon: "/favicon/favicon.png",
+  }
 };
 
 export default function RootLayout({
@@ -31,6 +32,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+    <Analytics />
+    </html >
   );
 }
